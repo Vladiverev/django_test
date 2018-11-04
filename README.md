@@ -1,5 +1,5 @@
 # Flask_test
-Test blog on flask..
+Test blog on flask...
 
 # requirements
 
