@@ -1,0 +1,28 @@
+<!-- Page showing price trend and forecast for selected cathegory -->
+
+{% extends 'trends/base.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+        <h3 class="text-center pt-3">Price dynamics for{{ item }}</h3>
+        {% autoescape off %}
+            {{ plot_div }}
+            {{ table_div }}
+        {% endautoescape %}
+        <p class="font-weight-bold pt-3">Predicted Price: {{ pred_price }} ({{ pc_change }})</p>
+        <pclass="pt-3">The price forecast is based on previous dynamics and does not take
+            into account the influence of external factors.</p>
+
+    {% else %}
+
+        <div class="border bg-light">
+            <p class="pl-3 pt-3">You must register to view this page.</p>
+            <p class="pl-3">Go to the registration page and enter your username and password.
+            If you have forgotten your password or cannot log in, contact the site administrator.</p>
+        </div>
+
+    {% endif %}
+
+{% endblock content %}

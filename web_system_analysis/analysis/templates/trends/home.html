@@ -1,0 +1,47 @@
+{% extends 'trends/base.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+        <div class="border bg-light">
+            <p class="font-weight-bold"> User: {{ user.username }}</p>
+            <p>To build a graph with the dynamics and forecast of prices for the product you are interested in,
+            select one of the product categories, specify the forecasting method and forecast horizon.</p>
+            <form action="trend" method="GET">
+                <div class="form-group">
+                    <h5 for="selectitems">Product category</h3>
+                    <select class="form-control form-control-lg" id="selectitems" name="items">
+                        <option value="gold_price">Gold Comex</option>
+                        <option value="copper_price">Copper</option>
+                        <option value="oil_price">Brent crude</option>
+                    </select>
+                    <h5 for="selectmonths">Forecast horizon</h3>
+                    <select class="form-control form-control-lg" id="selectmonths" name="months">
+                        <option value="1">1 month</option>
+                        <option value="3">3 months</option>
+                        <option value="6">6 months</option>
+                        <option value="9">9 months</option>
+                        <option value="12">12 months</option>
+                    </select>
+                    <h5 for="selectmethod">Forecasting method</h3>
+                    <select class="form-control form-control-lg" id="selectmethod" name="methods">
+                        <option value="linregression">Linear Regression</option>
+                        <option value="expsmoothing">Exponential smoothing</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Show graph</button>
+            </form>
+        </div>
+
+    {% else %}
+
+        <div class="border bg-light">
+            <p class="pl-3 pt-3">To log in, click Login and enter your username and password.</p>
+            <p class="pl-3">If you forgot your password or cannot log in,
+            contact the site administrator.</p>
+        </div>
+
+    {% endif %}
+
+{% endblock content %}
